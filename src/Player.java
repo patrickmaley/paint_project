@@ -22,7 +22,7 @@ import java.util.List;
 public class Player implements Comparable<Player>, Comparator<Player>{
 	
 	private String playerName;
-	private int balance;
+	private double balance;
 	private PokerHand pokerhand;
 	private int playerID;
 	private List<Card> cards = new ArrayList<>();
@@ -30,7 +30,7 @@ public class Player implements Comparable<Player>, Comparator<Player>{
 	
 	public Player(int number, String name) {
 		this.playerName = name + " " + number;
-		this.balance = 100;
+		this.balance = 100.0;
 		this.playerID = number;
 	}
 
@@ -38,7 +38,7 @@ public class Player implements Comparable<Player>, Comparator<Player>{
 		return this.playerName;
 	}
 
-	public int getBalance() {
+	public Double getBalance() {
 		return this.balance;
 	}
 
@@ -144,8 +144,8 @@ public class Player implements Comparable<Player>, Comparator<Player>{
 		this.balance -= 2;
 	}
 	
-	public void addWinnings(int winning){
-		this.balance += winning;
+	public void addWinnings(double totalWinnings){
+		this.balance += totalWinnings;
 	}
 
 	public void setPokerHandNull() {

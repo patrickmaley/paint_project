@@ -91,7 +91,7 @@ public class GameStart {
 	
 	//The settle winnings method handles the winner for each hand based on arraylist index.
 	private void settleWinnings(List<Player> comparingPlayers) {
-		int totalWinnings = (playerCount - 1) * 2; // This variable value is used for only one winner.
+		double totalWinnings = (playerCount - 1) * 2; // This variable value is used for only one winner.
 		int losers = this.playerCount-2; //Index for where the losers begin in the comparingPlayers arraylist descending.
 		int winners = 0;
 		int lastIndex = this.playerCount - 1;
@@ -104,9 +104,10 @@ public class GameStart {
 		//If they do equal then multiple winners could be possible.
 		if(first.getPokerHand().compareTo(second.getPokerHand()) != 0){
 			first.addWinnings(totalWinnings);
-			System.out.println("Winner: " + first.getName() + " $" + first.getBalance());
-			System.out.println("++++++++++++++++++++++++++++++++++++");
-			System.out.println("\t" + first.getPokerHand().getPokerHandRank().getRankName() + " " +  first.getBestHand());
+			System.out.format("Winner: %s $%.1f%n", first.getName() ,first.getBalance());
+			
+			System.out.format("++++++++++++++++++++++++++++++++++++%n");
+			System.out.format("\t%s %s%n", first.getPokerHand().getPokerHandRank().getRankName(), first.getBestHand());
 		}else{
 			//The method adds 1 to the winners because right now we know at least the first and second
 			// players are tied.
@@ -122,15 +123,18 @@ public class GameStart {
 			}
 			
 			totalWinnings = (playerCount - (winners + 1)) * 2; //Divides the winnings based on the number of winners
-			System.out.println("Winning hands (tie)");
-			System.out.println("++++++++++++++++++++++++++++++++++++");
+			System.out.format("Winning hands (tie)%n");
+			System.out.format("++++++++++++++++++++++++++++++++++++%n");
 			
 			//Iterates the players arraylist starting at the last index based on the amount of winners
 			for (int i = winners; i >= 0; i--) {
 				Player winningPlayer = comparingPlayers.get(lastIndex);
 				winningPlayer.addWinnings(totalWinnings / (winners + 1));
-				System.out.println(winningPlayer.getBestHand() + " - " + winningPlayer.getPokerHand().getPokerHandRank().getRankName() +
-						" - " + winningPlayer.getName() + " " + winningPlayer.getBalance());
+				System.out.format("%s - %s - %s %.1f%n",winningPlayer.getBestHand(),
+						winningPlayer.getPokerHand().getPokerHandRank().getRankName(),
+						 winningPlayer.getName(),
+						 winningPlayer.getBalance());
+				
 				lastIndex--;
 			}
 			
@@ -169,9 +173,9 @@ public class GameStart {
 	//Displays all players with their name, balance, two cards and also their best hand
 	private void displayPlayers() {
 		for (Player player : this.players) {
-			System.out.println(player.getName() + ": $" + player.getBalance() + " - " + player.getHand());
-			System.out.println("\tBest hand: " + player.getBestHand() + " - " + player.getPokerHand().getPokerHandRank().getRankName());
-			System.out.println();
+			System.out.format( "%s: $", player.getName()); 
+			System.out.format("%.1f" + " - " + "%s%n",player.getBalance(), player.getHand());
+			System.out.format("\tBest hand: %s - %s%n%n" , player.getBestHand() , player.getPokerHand().getPokerHandRank().getRankName() );
 		}
 	}
 	
@@ -180,6 +184,7 @@ public class GameStart {
 		String continueGameInput = "";
 		System.out.println();
 		System.out.println("Play another round? y or n: ");
+		System.out.println();
 		continueGameInput = in.next();
 		if(continueGameInput.toLowerCase().compareTo("n") == 0 ||continueGameInput.toLowerCase().compareTo("no") == 0){
 			this.continueGame = false;
