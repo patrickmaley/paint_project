@@ -2,15 +2,15 @@
  * 
  *Class: CSC 335
  * 
- *Project: Rank, Suit, Card, Pokerhand
+ *Project: Arizona Hold Em
  * 
- *Date: January 24, 2016
+ *Date: February 2, 2016
  *
  *Professor: Dr. Mercer
  *
  *Section Lead: Cindy Trieu
  *
- *Class Description: Card creates a Card object with a suit, rank, and a method
+ *Class Description: Card creates a Card object with a suit, rank, a char representation, and a method
  *for comparing a Card to other Card
  *
  */
@@ -32,10 +32,12 @@ public class Card implements Comparable<Card>{
 		return this.cardRank;
 	}
 
+	//This method is used to compare cards in a list or arraylist;
 	@Override
 	public int compareTo(Card other) {
 		return this.cardRank.getValue() - other.cardRank.getValue();
 	}
+	
 	public char getChar(){
 		switch(this.getRank().getValue()){
 			case 14: highRanks = 'A'; break;
@@ -46,6 +48,7 @@ public class Card implements Comparable<Card>{
 		}
 		return highRanks;
 	}
+	
 	public String getRankString(){
 		if(cardRank.getValue() > 10){
 			return this.getChar() + "";

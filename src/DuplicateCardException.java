@@ -14,6 +14,7 @@
  *2 or more cards share the same rank and suit.
  *
  */
+@SuppressWarnings("serial")
 public class DuplicateCardException extends RuntimeException {
 
 }

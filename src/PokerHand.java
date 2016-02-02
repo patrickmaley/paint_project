@@ -21,12 +21,6 @@ import java.util.List;
  *
  */
 public class PokerHand implements Comparable<PokerHand>{
-	//private Card firstCard;
-	//private Card secondCard;
-	//private Card thirdCard;
-	//private Card fourthCard;
-	//private Card fifthCard;
-	//private int fullHousePairValue;
 	
 	private PokerHandRank pokerHandRank;
 	
@@ -43,13 +37,7 @@ public class PokerHand implements Comparable<PokerHand>{
 	
 	//Set the values for the PokerHand object and sorts them from smallest(0 index) to Largest(4 index)
 	public PokerHand(Card cardOne, Card cardTwo, Card cardThree, Card cardFour, Card cardFive) {
-		//firstCard = cardOne;
-		//secondCard = cardTwo;
-		//thirdCard = cardThree;
-		//fourthCard = cardFour;
-		//fifthCard = cardFive;
-		//createHand();
-		
+	
 		hand.add(cardOne);
 		hand.add(cardTwo);
 		hand.add(cardThree);
@@ -76,14 +64,6 @@ public class PokerHand implements Comparable<PokerHand>{
 		}
 		
 	}
-	
-	//	private void createHand() {
-	//		hand.add(firstCard);
-	//		hand.add(secondCard);
-	//		hand.add(thirdCard);
-	//		hand.add(fourthCard);
-	//		hand.add(fifthCard);
-	//	}
 	
 	//Sets the PokerHandRank enum for each pokerhand
 	private PokerHandRank getPokerHandRank(List<Card> cards) {
@@ -207,6 +187,7 @@ public class PokerHand implements Comparable<PokerHand>{
 	//Determines if the hand is three of a kind
 	private boolean isThreeOfAKind(List<Card> cards) {
 		int threeOfAKind = 0;
+
 		for (int j = 0; j < cards.size(); j++) {
 			for (int i = 0 ; i < cards.size(); i++) {
 				if(cards.get(j).getRank() == cards.get(i).getRank()){
@@ -303,12 +284,8 @@ public class PokerHand implements Comparable<PokerHand>{
 	//Compares pokerhands based on their PokerHandRank enum value. If there is a tie
 	//it compares the highest cards. If the tie remains, it returns 0;
 	public int compareTo(PokerHand other) {
-		//List<Card> duplicateList = createDuplicateList(other);
-		//findDuplicates(duplicateList);
-		
+	
 		if(this.pokerHandRank.getValue() == other.pokerHandRank.getValue()){
-		
-			
 			 if(this.pokerHandRank == PokerHandRank.FourOfAKind){
 				 if(this.fourOfAKindValue == other.fourOfAKindValue){
 						return isHighCard(other);
@@ -353,6 +330,7 @@ public class PokerHand implements Comparable<PokerHand>{
 		}
 	}
 	
+	//Compares based on card rank values
 	private int isHighCard(PokerHand other) {
 		int playerHand = 4; //Fifth Card in hand Highest Value
 		int otherHand = 4; //Fifth Card in hand Highest Value
@@ -367,16 +345,16 @@ public class PokerHand implements Comparable<PokerHand>{
 	}
 
 	//Creates a single pokerhand with 10 cards to return for duplicate testing
-	private List<Card> createDuplicateList(PokerHand other) {
-		List<Card> playerList = new ArrayList<>();
-		for (Card card : this.hand) {
-			playerList.add(card);
-		}
-		for (Card card : other.hand) {
-			playerList.add(card);
-		}
-		return playerList;
-	}
+//	private List<Card> createDuplicateList(PokerHand other) {
+//		List<Card> playerList = new ArrayList<>();
+//		for (Card card : this.hand) {
+//			playerList.add(card);
+//		}
+//		for (Card card : other.hand) {
+//			playerList.add(card);
+//		}
+//		return playerList;
+//	}
 
 	//Getter for each hands pokerHandRank
 	public PokerHandRank getPokerHandRank(){
@@ -395,7 +373,6 @@ public class PokerHand implements Comparable<PokerHand>{
 	}
 
 	public List<Card> getHand() {
-		// TODO Auto-generated method stub
 		return this.hand;
 	}
 	

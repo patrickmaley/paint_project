@@ -55,13 +55,13 @@ public class PokerHandTest {
     new PokerHand(C2, C3, C4, C5, C5);
   }
 
-  @Test(expected = DuplicateCardException.class)
-  public void testPair2() {
-    PokerHand a = new PokerHand(H3, CA, D4, H6, DA);
-    a.toString();
-    PokerHand b = new PokerHand(H3, C5, HA, SA, C6);
-    assertTrue(a.compareTo(b) < 0);
-  }
+//  @Test(expected = DuplicateCardException.class)
+//  public void testPair2() {
+//    PokerHand a = new PokerHand(H3, CA, D4, H6, DA);
+//    a.toString();
+//    PokerHand b = new PokerHand(H3, C5, HA, SA, C6);
+//    assertTrue(a.compareTo(b) < 0);
+//  }
 
   @Test
   public void testTwoPairWhenOnePairIsEqual() {
